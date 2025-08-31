@@ -7,6 +7,6 @@ export const schema = Joi.object({
     state: Joi.string().required(),
     contact: Joi.string().pattern(/^[0-9]{10}$/).required(),
     email_id: Joi.string()
-        .email({ minDomainSegments: 2, tlds: { allow: ["com", "net", "org", "in"] } })
+        .email({ minDomainSegments: 2, tlds: { allow: ["com", "net", "org", "in" , "edu"] } })
         .required(),
 });
