@@ -12,9 +12,7 @@ const uploadOnCloudinary = async (file) => {
   try {
     // Use file.path, not the whole object
     const result = await cloudinary.uploader.upload(file.path);
-    console.log("Cloudinary result:", result);
-
-    // Remove the local file after upload
+    
     fs.unlinkSync(file.path);
 
     // Return the secure URL
