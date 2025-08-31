@@ -15,7 +15,7 @@ const PORT =process.env.PORT ||  5000;
 // Middleware
 app.use(
   cors({
-    origin: ["http://localhost:3000", "https://your-frontend-domain.com"],
+    origin: [ "https://school-crud-livid.vercel.app" , "http://localhost:3000"],
     credentials: true,
   })
 );
