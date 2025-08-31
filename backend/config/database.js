@@ -12,6 +12,7 @@ const url = new URL(connectionString);
   password: url.password,
   database: url.pathname.slice(1),
   port: parseInt(url.port),
+  connectionLimit: 10,
   ssl: { rejectUnauthorized: false }
 });
 
