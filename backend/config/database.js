@@ -13,7 +13,11 @@ const url = new URL(connectionString);
   database: url.pathname.slice(1),
   port: parseInt(url.port),
   connectionLimit: 10,
-  ssl: { rejectUnauthorized: false }
+  ssl: { rejectUnauthorized: false },
+  queueLimit: 0,
+  connectTimeout: 20000,
+  enableKeepAlive: true, 
+  keepAliveInitialDelay: 10000 
 });
 
 
@@ -27,6 +31,15 @@ export const testConnection = async () => {
     console.error(" Database connection failed:", error.message);
   }
 };
+
+setInterval(async () => {
+  try {
+    await pool.query("SELECT 1");
+    console.log(" DB keep-alive ping");
+  } catch (err) {
+    console.error(" Ping failed:", err);
+  }
+}, 60000);
 
 
 export default pool;
